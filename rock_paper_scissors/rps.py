@@ -3,7 +3,19 @@
 import sys
 
 def rock_paper_scissors(n):
-  pass 
+  options = ['rock', 'paper', 'scissors']
+  all_combos = []
+
+  def pair_options(pairs_left, total):
+  	if pairs_left == 0:
+  		all_combos.append(total)
+  		return
+
+  	for i in range(0, len(options)):
+  		pair_options(pairs_left -1, total + [options[i]])
+
+  	pair_options(n, [])
+  	return all_combos
 
 
 if __name__ == "__main__":
