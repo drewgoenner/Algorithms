@@ -2,8 +2,22 @@
 
 import sys
 
+
 def making_change(amount, denominations):
-  pass 
+	# denominations = [50, 25, 10, 5, 1]
+	# set how to find combinations
+	combos = [0] * (amount + 1)
+	# set base
+	if amount <= -1:
+		return 0
+	combos[0] = 1
+	#double for loop to go through and match up denominations
+	for coin in denominations:
+		for j in range(coin, amount + 1):
+			combos[j] += combos[j - coin]
+	#return the total amount of combinations to make the provided amount
+	return combos[amount]
+  
 
 
 if __name__ == "__main__":
